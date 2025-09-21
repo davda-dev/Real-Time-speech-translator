@@ -335,40 +335,76 @@ const App = () => {
       
       const source = audioContextRef.current.createMediaStreamSource(stream);
       
-      // Create script processor for real-time audio data
-      // Note: Using createScriptProcessor for compatibility, AudioWorkletNode would be preferred but requires more setup
-      const bufferSize = import.meta.env.VITE_AUDIO_BUFFER_SIZE || 4096;
-      const processor = audioContextRef.current.createScriptProcessor(bufferSize, 1, 1);
-      
-      processor.onaudioprocess = (event) => {
-        if (deepgramSocketRef.current && deepgramSocketRef.current.readyState === WebSocket.OPEN) {
-          const inputBuffer = event.inputBuffer;
-          const inputData = inputBuffer.getChannelData(0);
-          
-          // Check for audio activity
-          let sum = 0;
-          for (let i = 0; i < inputData.length; i++) {
-            sum += Math.abs(inputData[i]);
-          }
-          const audioLevel = sum / inputData.length;
-          
-          // Only send if there's some audio activity (above noise threshold)
-          if (audioLevel > 0.001) {
-            // Convert float32 to int16 for Deepgram
-            const int16Buffer = new Int16Array(inputData.length);
-            for (let i = 0; i < inputData.length; i++) {
-              int16Buffer[i] = Math.max(-32768, Math.min(32767, inputData[i] * 32768));
-            }
+      // Use modern AudioWorkletNode instead of deprecated ScriptProcessorNode
+      try {
+        await audioContextRef.current.audioWorklet.addModule('/audio-worklet.js');
+        const workletNode = new AudioWorkletNode(audioContextRef.current, 'audio-processor');
+        
+        workletNode.port.onmessage = (event) => {
+          if (event.data.type === 'audioData' && deepgramSocketRef.current && deepgramSocketRef.current.readyState === WebSocket.OPEN) {
+            const audioData = event.data.buffer;
             
-            // Send raw audio data to Deepgram
-            deepgramSocketRef.current.send(int16Buffer.buffer);
+            // Check for audio activity
+            let sum = 0;
+            for (let i = 0; i < audioData.length; i++) {
+              sum += Math.abs(audioData[i]);
+            }
+            const audioLevel = sum / audioData.length;
+            
+            // Only send if there's some audio activity (above noise threshold)
+            if (audioLevel > 0.001) {
+              // Convert float32 to int16 for Deepgram
+              const int16Buffer = new Int16Array(audioData.length);
+              for (let i = 0; i < audioData.length; i++) {
+                int16Buffer[i] = Math.max(-32768, Math.min(32767, audioData[i] * 32768));
+              }
+              
+              // Send raw audio data to Deepgram
+              deepgramSocketRef.current.send(int16Buffer.buffer);
+            }
           }
-        }
-      };
-      
-      // Connect audio processing pipeline
-      source.connect(processor);
-      processor.connect(audioContextRef.current.destination);
+        };
+        
+        // Connect audio processing pipeline
+        source.connect(workletNode);
+        workletNode.connect(audioContextRef.current.destination);
+        
+      } catch (error) {
+        console.warn('AudioWorklet not supported, falling back to ScriptProcessorNode:', error);
+        // Fallback to ScriptProcessorNode for older browsers
+        const bufferSize = import.meta.env.VITE_AUDIO_BUFFER_SIZE || 4096;
+        const processor = audioContextRef.current.createScriptProcessor(bufferSize, 1, 1);
+        
+        processor.onaudioprocess = (event) => {
+          if (deepgramSocketRef.current && deepgramSocketRef.current.readyState === WebSocket.OPEN) {
+            const inputBuffer = event.inputBuffer;
+            const inputData = inputBuffer.getChannelData(0);
+            
+            // Check for audio activity
+            let sum = 0;
+            for (let i = 0; i < inputData.length; i++) {
+              sum += Math.abs(inputData[i]);
+            }
+            const audioLevel = sum / inputData.length;
+            
+            // Only send if there's some audio activity (above noise threshold)
+            if (audioLevel > 0.001) {
+              // Convert float32 to int16 for Deepgram
+              const int16Buffer = new Int16Array(inputData.length);
+              for (let i = 0; i < inputData.length; i++) {
+                int16Buffer[i] = Math.max(-32768, Math.min(32767, inputData[i] * 32768));
+              }
+              
+              // Send raw audio data to Deepgram
+              deepgramSocketRef.current.send(int16Buffer.buffer);
+            }
+          }
+        };
+        
+        // Connect audio processing pipeline
+        source.connect(processor);
+        processor.connect(audioContextRef.current.destination);
+      }
       
       // Connect to Deepgram after audio setup
       connectToDeepgram();
