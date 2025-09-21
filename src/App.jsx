@@ -336,7 +336,9 @@ const App = () => {
       const source = audioContextRef.current.createMediaStreamSource(stream);
       
       // Create script processor for real-time audio data
-      const processor = audioContextRef.current.createScriptProcessor(4096, 1, 1);
+      // Note: Using createScriptProcessor for compatibility, AudioWorkletNode would be preferred but requires more setup
+      const bufferSize = import.meta.env.VITE_AUDIO_BUFFER_SIZE || 4096;
+      const processor = audioContextRef.current.createScriptProcessor(bufferSize, 1, 1);
       
       processor.onaudioprocess = (event) => {
         if (deepgramSocketRef.current && deepgramSocketRef.current.readyState === WebSocket.OPEN) {
