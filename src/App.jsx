@@ -51,87 +51,87 @@ const App = () => {
     'ig': 'Igbo', 'ha': 'Hausa', 'so': 'Somali'
   };
 
-  // Language options
+  // Language options (sorted alphabetically)
   const languageOptions = [
-    { value: 'en', label: 'English (en)' },
-    { value: 'es', label: 'Spanish (es)' },
-    { value: 'fr', label: 'French (fr)' },
-    { value: 'it', label: 'Italian (it)' },
-    { value: 'de', label: 'German (de)' },
-    { value: 'pt', label: 'Portuguese (pt)' },
-    { value: 'ru', label: 'Russian (ru)' },
-    { value: 'zh', label: 'Chinese (zh)' },
-    { value: 'ja', label: 'Japanese (ja)' },
-    { value: 'ko', label: 'Korean (ko)' },
-    { value: 'ar', label: 'Arabic (ar)' },
-    { value: 'hi', label: 'Hindi (hi)' },
-    { value: 'nl', label: 'Dutch (nl)' },
-    { value: 'sv', label: 'Swedish (sv)' },
-    { value: 'da', label: 'Danish (da)' },
-    { value: 'no', label: 'Norwegian (no)' },
-    { value: 'fi', label: 'Finnish (fi)' },
-    { value: 'pl', label: 'Polish (pl)' },
-    { value: 'tr', label: 'Turkish (tr)' },
-    { value: 'cs', label: 'Czech (cs)' },
-    { value: 'hu', label: 'Hungarian (hu)' },
-    { value: 'ro', label: 'Romanian (ro)' },
-    { value: 'bg', label: 'Bulgarian (bg)' },
-    { value: 'hr', label: 'Croatian (hr)' },
-    { value: 'sk', label: 'Slovak (sk)' },
-    { value: 'sl', label: 'Slovenian (sl)' },
-    { value: 'et', label: 'Estonian (et)' },
-    { value: 'lv', label: 'Latvian (lv)' },
-    { value: 'lt', label: 'Lithuanian (lt)' },
-    { value: 'uk', label: 'Ukrainian (uk)' },
-    { value: 'el', label: 'Greek (el)' },
-    { value: 'he', label: 'Hebrew (he)' },
-    { value: 'th', label: 'Thai (th)' },
-    { value: 'vi', label: 'Vietnamese (vi)' },
-    { value: 'id', label: 'Indonesian (id)' },
-    { value: 'ms', label: 'Malay (ms)' },
-    { value: 'tl', label: 'Filipino (tl)' },
-    { value: 'ca', label: 'Catalan (ca)' },
-    { value: 'eu', label: 'Basque (eu)' },
-    { value: 'gl', label: 'Galician (gl)' },
-    { value: 'is', label: 'Icelandic (is)' },
-    { value: 'mt', label: 'Maltese (mt)' },
-    { value: 'cy', label: 'Welsh (cy)' },
-    { value: 'ga', label: 'Irish (ga)' },
-    { value: 'mk', label: 'Macedonian (mk)' },
+    { value: 'af', label: 'Afrikaans (af)' },
     { value: 'sq', label: 'Albanian (sq)' },
-    { value: 'be', label: 'Belarusian (be)' },
-    { value: 'fa', label: 'Persian (fa)' },
-    { value: 'ur', label: 'Urdu (ur)' },
-    { value: 'bn', label: 'Bengali (bn)' },
-    { value: 'ta', label: 'Tamil (ta)' },
-    { value: 'te', label: 'Telugu (te)' },
-    { value: 'ml', label: 'Malayalam (ml)' },
-    { value: 'kn', label: 'Kannada (kn)' },
-    { value: 'gu', label: 'Gujarati (gu)' },
-    { value: 'pa', label: 'Punjabi (pa)' },
-    { value: 'mr', label: 'Marathi (mr)' },
-    { value: 'ne', label: 'Nepali (ne)' },
-    { value: 'si', label: 'Sinhala (si)' },
-    { value: 'my', label: 'Myanmar (my)' },
-    { value: 'km', label: 'Khmer (km)' },
-    { value: 'lo', label: 'Lao (lo)' },
-    { value: 'ka', label: 'Georgian (ka)' },
+    { value: 'am', label: 'Amharic (am)' },
+    { value: 'ar', label: 'Arabic (ar)' },
     { value: 'hy', label: 'Armenian (hy)' },
     { value: 'az', label: 'Azerbaijani (az)' },
+    { value: 'eu', label: 'Basque (eu)' },
+    { value: 'be', label: 'Belarusian (be)' },
+    { value: 'bn', label: 'Bengali (bn)' },
+    { value: 'bg', label: 'Bulgarian (bg)' },
+    { value: 'ca', label: 'Catalan (ca)' },
+    { value: 'zh', label: 'Chinese (zh)' },
+    { value: 'hr', label: 'Croatian (hr)' },
+    { value: 'cs', label: 'Czech (cs)' },
+    { value: 'da', label: 'Danish (da)' },
+    { value: 'nl', label: 'Dutch (nl)' },
+    { value: 'en', label: 'English (en)' },
+    { value: 'et', label: 'Estonian (et)' },
+    { value: 'tl', label: 'Filipino (tl)' },
+    { value: 'fi', label: 'Finnish (fi)' },
+    { value: 'fr', label: 'French (fr)' },
+    { value: 'gl', label: 'Galician (gl)' },
+    { value: 'ka', label: 'Georgian (ka)' },
+    { value: 'de', label: 'German (de)' },
+    { value: 'el', label: 'Greek (el)' },
+    { value: 'gu', label: 'Gujarati (gu)' },
+    { value: 'ha', label: 'Hausa (ha)' },
+    { value: 'he', label: 'Hebrew (he)' },
+    { value: 'hi', label: 'Hindi (hi)' },
+    { value: 'hu', label: 'Hungarian (hu)' },
+    { value: 'is', label: 'Icelandic (is)' },
+    { value: 'ig', label: 'Igbo (ig)' },
+    { value: 'id', label: 'Indonesian (id)' },
+    { value: 'ga', label: 'Irish (ga)' },
+    { value: 'it', label: 'Italian (it)' },
+    { value: 'ja', label: 'Japanese (ja)' },
+    { value: 'kn', label: 'Kannada (kn)' },
     { value: 'kk', label: 'Kazakh (kk)' },
+    { value: 'km', label: 'Khmer (km)' },
+    { value: 'ko', label: 'Korean (ko)' },
     { value: 'ky', label: 'Kyrgyz (ky)' },
-    { value: 'uz', label: 'Uzbek (uz)' },
-    { value: 'tg', label: 'Tajik (tg)' },
+    { value: 'lo', label: 'Lao (lo)' },
+    { value: 'lv', label: 'Latvian (lv)' },
+    { value: 'lt', label: 'Lithuanian (lt)' },
+    { value: 'mk', label: 'Macedonian (mk)' },
+    { value: 'ms', label: 'Malay (ms)' },
+    { value: 'ml', label: 'Malayalam (ml)' },
+    { value: 'mt', label: 'Maltese (mt)' },
+    { value: 'mr', label: 'Marathi (mr)' },
     { value: 'mn', label: 'Mongolian (mn)' },
-    { value: 'af', label: 'Afrikaans (af)' },
+    { value: 'my', label: 'Myanmar (my)' },
+    { value: 'ne', label: 'Nepali (ne)' },
+    { value: 'no', label: 'Norwegian (no)' },
+    { value: 'pa', label: 'Punjabi (pa)' },
+    { value: 'fa', label: 'Persian (fa)' },
+    { value: 'pl', label: 'Polish (pl)' },
+    { value: 'pt', label: 'Portuguese (pt)' },
+    { value: 'ro', label: 'Romanian (ro)' },
+    { value: 'ru', label: 'Russian (ru)' },
+    { value: 'si', label: 'Sinhala (si)' },
+    { value: 'sk', label: 'Slovak (sk)' },
+    { value: 'sl', label: 'Slovenian (sl)' },
+    { value: 'so', label: 'Somali (so)' },
+    { value: 'es', label: 'Spanish (es)' },
     { value: 'sw', label: 'Swahili (sw)' },
-    { value: 'am', label: 'Amharic (am)' },
-    { value: 'zu', label: 'Zulu (zu)' },
+    { value: 'sv', label: 'Swedish (sv)' },
+    { value: 'tg', label: 'Tajik (tg)' },
+    { value: 'ta', label: 'Tamil (ta)' },
+    { value: 'te', label: 'Telugu (te)' },
+    { value: 'th', label: 'Thai (th)' },
+    { value: 'tr', label: 'Turkish (tr)' },
+    { value: 'uk', label: 'Ukrainian (uk)' },
+    { value: 'ur', label: 'Urdu (ur)' },
+    { value: 'uz', label: 'Uzbek (uz)' },
+    { value: 'vi', label: 'Vietnamese (vi)' },
+    { value: 'cy', label: 'Welsh (cy)' },
     { value: 'xh', label: 'Xhosa (xh)' },
     { value: 'yo', label: 'Yoruba (yo)' },
-    { value: 'ig', label: 'Igbo (ig)' },
-    { value: 'ha', label: 'Hausa (ha)' },
-    { value: 'so', label: 'Somali (so)' }
+    { value: 'zu', label: 'Zulu (zu)' }
   ];
 
   // Update status
@@ -335,76 +335,38 @@ const App = () => {
       
       const source = audioContextRef.current.createMediaStreamSource(stream);
       
-      // Use modern AudioWorkletNode instead of deprecated ScriptProcessorNode
-      try {
-        await audioContextRef.current.audioWorklet.addModule('/audio-worklet.js');
-        const workletNode = new AudioWorkletNode(audioContextRef.current, 'audio-processor');
-        
-        workletNode.port.onmessage = (event) => {
-          if (event.data.type === 'audioData' && deepgramSocketRef.current && deepgramSocketRef.current.readyState === WebSocket.OPEN) {
-            const audioData = event.data.buffer;
-            
-            // Check for audio activity
-            let sum = 0;
-            for (let i = 0; i < audioData.length; i++) {
-              sum += Math.abs(audioData[i]);
-            }
-            const audioLevel = sum / audioData.length;
-            
-            // Only send if there's some audio activity (above noise threshold)
-            if (audioLevel > 0.001) {
-              // Convert float32 to int16 for Deepgram
-              const int16Buffer = new Int16Array(audioData.length);
-              for (let i = 0; i < audioData.length; i++) {
-                int16Buffer[i] = Math.max(-32768, Math.min(32767, audioData[i] * 32768));
-              }
-              
-              // Send raw audio data to Deepgram
-              deepgramSocketRef.current.send(int16Buffer.buffer);
-            }
+      // Create script processor for real-time audio data
+      const processor = audioContextRef.current.createScriptProcessor(4096, 1, 1);
+      
+      processor.onaudioprocess = (event) => {
+        if (deepgramSocketRef.current && deepgramSocketRef.current.readyState === WebSocket.OPEN) {
+          const inputBuffer = event.inputBuffer;
+          const inputData = inputBuffer.getChannelData(0);
+          
+          // Check for audio activity
+          let sum = 0;
+          for (let i = 0; i < inputData.length; i++) {
+            sum += Math.abs(inputData[i]);
           }
-        };
-        
-        // Connect audio processing pipeline
-        source.connect(workletNode);
-        workletNode.connect(audioContextRef.current.destination);
-        
-      } catch (error) {
-        console.warn('AudioWorklet not supported, falling back to ScriptProcessorNode:', error);
-        // Fallback to ScriptProcessorNode for older browsers
-        const bufferSize = import.meta.env.VITE_AUDIO_BUFFER_SIZE || 4096;
-        const processor = audioContextRef.current.createScriptProcessor(bufferSize, 1, 1);
-        
-        processor.onaudioprocess = (event) => {
-          if (deepgramSocketRef.current && deepgramSocketRef.current.readyState === WebSocket.OPEN) {
-            const inputBuffer = event.inputBuffer;
-            const inputData = inputBuffer.getChannelData(0);
-            
-            // Check for audio activity
-            let sum = 0;
+          const audioLevel = sum / inputData.length;
+          
+          // Only send if there's some audio activity (above noise threshold)
+          if (audioLevel > 0.001) {
+            // Convert float32 to int16 for Deepgram
+            const int16Buffer = new Int16Array(inputData.length);
             for (let i = 0; i < inputData.length; i++) {
-              sum += Math.abs(inputData[i]);
+              int16Buffer[i] = Math.max(-32768, Math.min(32767, inputData[i] * 32768));
             }
-            const audioLevel = sum / inputData.length;
             
-            // Only send if there's some audio activity (above noise threshold)
-            if (audioLevel > 0.001) {
-              // Convert float32 to int16 for Deepgram
-              const int16Buffer = new Int16Array(inputData.length);
-              for (let i = 0; i < inputData.length; i++) {
-                int16Buffer[i] = Math.max(-32768, Math.min(32767, inputData[i] * 32768));
-              }
-              
-              // Send raw audio data to Deepgram
-              deepgramSocketRef.current.send(int16Buffer.buffer);
-            }
+            // Send raw audio data to Deepgram
+            deepgramSocketRef.current.send(int16Buffer.buffer);
           }
-        };
-        
-        // Connect audio processing pipeline
-        source.connect(processor);
-        processor.connect(audioContextRef.current.destination);
-      }
+        }
+      };
+      
+      // Connect audio processing pipeline
+      source.connect(processor);
+      processor.connect(audioContextRef.current.destination);
       
       // Connect to Deepgram after audio setup
       connectToDeepgram();
@@ -535,7 +497,7 @@ const App = () => {
                   onChange={(e) => setTargetLanguage(e.target.value)}
                   aria-label="Target language"
                 >
-                  {languageOptions.slice(1).map(option => (
+                  {languageOptions.map(option => (
                     <option key={option.value} value={option.value}>
                       {option.label}
                     </option>
