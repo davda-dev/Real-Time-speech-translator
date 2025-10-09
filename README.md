@@ -11,6 +11,10 @@ A React application that provides real-time speech transcription and translation
 - Toggle visibility of speech and translation panels
 - Responsive design with fixed-height scrollable text areas
 
+## Demo
+- **YouTube Demo**: [eExam_Demo](https://youtu.be/gh04Ih8CNmk)
+- **Live Website**: [eExam_web](https://real-time-speech-translator.netlify.app/ )
+
 ## Setup
 
 1. **Clone and install dependencies:**
